@@ -1,53 +1,47 @@
-# Alchemy React Base Template
+## react-todos
+Authenticated To Do List
+Deployed Example
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Learning Objectives
+Use Supabase authentication and authorization methods and row level security to protect an application’s data
+Connect Supabase’s auth methods to a React form to provide Sign In and Sign Up support
+Use React state and Supabase’s auth methods to create protected routes in React router which are only available to authenticated users
+Use React context to share state between components
+Description
+For this deliverable you will create an authenticated To Do list application. You can either use your previous table from the Web module, create a new Supabase table or you can use the Alchemy table using the following credentials:
 
-Use this template for all your "from scratch" deliverables. To start, simply run
+REACT_APP_SUPABASE_URL=https://nwxkvnsiwauieanvbiri.supabase.co
+REACT_APP_SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNzAwMzQzNCwiZXhwIjoxOTUyNTc5NDM0fQ.8XIsU0FANdaNeQnT-DojpTL-GTlTPZ4CYZDEetpFpWc
 
-- `npm install`
-- `npm start`
+## The schema for the Alchemy table is the following:
+Column	Data Type
+id	INT - Primary Key
+user_id	INT – Foreign Key
+description	VARCHAR
+complete	BOOL
+The table also must have Row Level Security enabled so that users can only interact with their own data.
 
-## Available Scripts
+## Acceptance Criteria
+Users can sign up for an account
+Users can sign in to an existing account
+Users can logout of an account
+Unauthenticated users see the option to sign in or sign up
+Authenticated users can see a list of to do items
+Authenticated users can add new to do items
+Authenticated users can complete to do items
+Authenticated users can delete to do items (stretch)
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-## The Golden Rule: 
-
-🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
-
-If you work on more than one feature at a time, you are guaranteed to multiply your bugs and your anxiety.
-
-## Making a plan in React
-1) Make a drawing of your app. Simple "wireframes" 
-1) Component Tree
-    1) Look at the drawing and break it down into Components. Label these Components explicitly (i.e., DogList, etc)
-    1) Draw a hierarchy (or tree) of components, describing which components are parents and which are children 
-    1) Looking at the drawing, make a list of your app's features. What should a user "be able to do" with this app?
-    1) Now look at your component tree: which components "go with" which features? Draw lines and make these connections explicitly.
-1) State
-    1) Look back at the drawing and your list of features and imagine using the app. What _state_ do you need to track? 
-    1) For each piece of state, ask: "When does it change?" If the answer is, "never", then it is not state.
-    1) Similarly, find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What state changes?" for each of these events. (This should feel like the the inverse of the previous step.)
-    1) Think about how to validate each of your state changes. How will I know if state changed in response to this event? (Hint: react dev tools or console.log usually helps here.)
-1) Data flow
-    1) Look at your hierarchy and ask: which components need access to which state? Another way to ask this is: for each component, what does this component need to "do its job?". This list becomes the "props" of the component.
-    1) If a child needs state from a parent, you will need to pass props. What will you name these props? 
-    1) Notice especially if two siblings need the same state: if so, you need a callback (i.e., debit card).
-1) Pick one feature from your list and build it out. Start with its parentmost component, and work down the component chain. Do not build another feature until this one is finished (and you can prove that it is finished by validating state change).
-
-## Additional considerations
-- Is any of your state redundant? For example, if you're tracking `wins`, `losses`, and `total`, you can probably get rid of `losses` state, and calculate it as `total - wins`.
-- Where should each piece of state live? How are you going to get data from where it lives to where it needs to be?
+## Rubric
+Task / Points
+Current User passed throughout the application using Context	2
+Nav bar shows current user and logout when authenticated	2
+Nav bar shows links to sign in / sign up when not authenticated	2
+Users can sign up for an account	2
+Users can sign in to an existing account	2
+Auth page redirects to tasks if user already authenticated	2
+Tasks redirects to auth if user is not authenticated	2
+Authenticated users can log out	2
+Authenticated users see a list of their tasks	2
+Authenticated users can add new tasks	2
+Stretch - Authenticated users can complete tasks	+ 1
+Stretch - Authenticated users can delete tasks	+ 1
