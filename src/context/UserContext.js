@@ -11,4 +11,3 @@ const UserProvider = ({ children }) => {
 
 export { UserProvider, UserContext };
 
-//started building auth, but determined I wanted to build an app skeleton first.//
