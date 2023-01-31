@@ -1,22 +1,30 @@
-import { createContext, useEffect, useState } from 'react';
-import { getTodo } from '../services/todo.js';
+import { createContext, useState, useContext } from 'react';
+import { createTodo } from '../services/todo.js';
 
 const TodoContext = createContext();
 
 const TodoProvider = ({ children }) => {
   const [todo, setTodo] = useState([]);
-  useEffect(() => {
-    const fetchTodo = async () => {
-      try {
-        const data = await getTodo();
-        setTodo(data);
-      } catch (e) {
-        console.error(e.message);
-      }
-    };
-    fetchTodo();
-  }, []);
-  return <TodoContext.Provider value={{ todo, setTodo }}>{children}</TodoContext.Provider>;
+
+  const addTodoHandler = async (newTodo) => {
+    try {
+      const response = await createTodo(newTodo);
+      setTodo([response.data, ...todo]);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return <TodoContext.Provider value={{ todo, addTodoHandler }}>{children}</TodoContext.Provider>;
 };
 
-export { TodoContext, TodoProvider };
+const useTodo = () => {
+  const context = useContext(TodoContext);
+  if (!context) {
+    throw new Error('useTodo must be wrapped in a UserProvider');
+  }
+
+  return context;
+};
+
+export { TodoProvider, useTodo };

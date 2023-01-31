@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { toggleTodo } from '../services/todo.js';
-import { TodoContext } from '../context/TodoContext.js';
+import { useTodo } from '../context/TodoContext.js';
 
 export default function TodoList() {
-  const { todo, setTodo } = useContext(TodoContext);
+  const { todo, setTodo } = useTodo();
   const handleChange = async (todo) => {
     try {
       const updatedTodo = await toggleTodo(todo);

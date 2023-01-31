@@ -1,4 +1,4 @@
-const { createContext, useState } = require('react');
+const { createContext, useState, useContext } = require('react');
 const { getUser } = require('../services/auth');
 
 const UserContext = createContext();
@@ -9,5 +9,9 @@ const UserProvider = ({ children }) => {
 
   return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 };
+const useUser = () => {
+  const context = useContext(UserContext);
+  return context;
+};
 
-export { UserProvider, UserContext };
+export { UserProvider, useUser };

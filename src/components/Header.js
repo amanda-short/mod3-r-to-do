@@ -2,11 +2,11 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { signOut } from '../services/auth';
-import { UserContext } from '../context/UserContext.js';
+import { useUser } from '../context/UserContext.js';
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useUser();
 
   const handleLogout = async () => {
     try {
@@ -35,12 +35,8 @@ export default function Header() {
           <div className="navbar-item">
             {!user && (
               <div className="buttons">
-                <Link className="button is-primary" to="/auth/sign-up">
-                  <strong>Sign up</strong>
-                </Link>
-                <Link className="button is-light" to="/auth/sign-in">
-                  <strong>Sign in</strong>
-                </Link>
+                <Link className="button is-primary" to="/auth/sign-up"></Link>
+                <Link className="button is-light" to="/auth/sign-in"></Link>
               </div>
             )}
             {user && (
