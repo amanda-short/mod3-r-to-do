@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { toggleTodo } from '../services/todo.js';
 import { useTodo } from '../context/TodoContext.js';
 
