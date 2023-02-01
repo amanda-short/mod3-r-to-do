@@ -1,0 +1,24 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    width: 50vw;
+    margin: 20px auto; 
+}
+  .panel-block {
+    display: flex;
+    flex-direction: column;
+  }
+  .field {
+    width: 100%;
+  }
+
+  .auth-box {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+ 
+  }
+  
